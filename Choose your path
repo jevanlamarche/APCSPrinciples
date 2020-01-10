@@ -1,0 +1,203 @@
+import time
+
+#story setup
+print("You are on plane ride to the Bermuda Triangle. Suddenly a bird gets sucked into the engine and your plane begins to fall out of the sky.")
+print("The Plane crashes into the ocean and begins to sink.")
+
+#spacing and timing
+print("")
+time.sleep(6)
+
+#define variables
+def end():
+    optionend()
+
+def bags():
+    print("Hurry!")
+    userninput1 = ()
+    option2()
+
+
+def raft():
+    print("Smart")
+    userinput3= ()
+    option3()
+
+def snacks():
+    print("")
+    option4()
+
+def money():
+    print("")
+    option5()
+
+def friend():
+    print("")
+    option6()
+
+def woman():
+    print("")
+    option7()
+
+
+
+#which bag
+def option2():
+    print("")
+    userinput2 = input ("Do you grab the bag of snacks or the bag of $100,000? ")
+    if userinput2.lower() == "snacks":
+        print("Quick the plane is sinking!")
+        option4()
+    elif userinput2.lower() == "money":
+        print("You're struggling to stay above the surface")
+        money()
+    else:
+        print("only answer... snacks or money")
+        option2()
+
+
+
+#help choice
+def option3():
+    print("")
+    userinput3 = input ("Do you help a stuggling rich elderly woman, or your best friend? ")
+    if userinput3.lower() == "rich elderly woman":
+        print ("Your friend sinks to the bottom of the ocean")
+        option6()
+    elif userinput3.lower() == "best friend":
+        print ("A woman is yelling at you for not saving her mom")
+        option7()
+    else:
+        print("only answer... rich elderly woman or best friend")
+        option3()
+
+
+
+#snack choice
+def option4():
+    print("")
+    userinput4 = input ("Do you... Hide the food and keep it all for yourself, or share it with the other survivors? ")
+    if userinput4.lower() == "hide it":
+        print("Someone finds the food and they assault you")
+        print("")
+        time.sleep(3)
+        print("YOU DIED")
+        optionplay()
+    elif userinput4.lower() == "share":
+        print ("You have less food for yourself but people appreciate you")
+        print("")
+        optionend()
+    else:
+        print("only answer... hide it or share")
+        option4()
+
+
+
+#money choice
+def option5():
+    print("")
+    userinput5 = input ("A person will save you, but you have to give them the money or, do you keep the money and stay in the water ")
+    if userinput5.lower() == "give them the money":
+        print ("You're saved")
+        print("")
+        optionend()
+    elif userinput5.lower() == "keep the money":
+        print ("You get a mouthful of water and can't breathe. You begin to sink...")
+        print("")
+        time.sleep(3)
+        print("YOU DIED")
+        optionplay()
+    else:
+        print("only answer... give them the money or keep the money")
+        option5()
+
+
+#dive choice
+def option6():
+    print("")
+    userinput6 = input ("Do you... Dive down to get him, or decide it's too late and not risk it? ")
+    if userinput6.lower() == "dive down":
+        print("You can't find him... he is dead")
+        print("")
+        print("You've lost your spot on the raft... You begin to drown")
+        print("")
+        time.sleep(3)
+        print("YOU DIED")
+        optionplay()
+    elif userinput6.lower() == "it's too late":
+        print("what have you done")
+        print("")
+        optionend()
+    else:
+        print("only answer... dive down or it's too late")
+        option6()
+
+#woman choice
+def option7():
+    print("")
+    userinput7 = input ("Do you... Apologize to her or yell back? ")
+    if userinput7.lower() == "apologize to her":
+        print("")
+        print ("She starts to cry")
+        optionend()
+    elif userinput7.lower() == "yell back":
+        print("She threatens to kill you")
+        print("")
+        print("you get shot by a woman with a flare gun")
+        print("")
+        time.sleep(3)
+        print("YOU DIED")
+        print("")
+        optionplay()
+    else:
+        print("only answer... apologize to her or yell back")
+        option7()
+
+#end comments
+def optionend():
+    print("You've been stranded for 2 weeks")
+    print("")
+    time.sleep(2)
+    print("You've run out of food and water")
+    print ("")
+    time.sleep(2)
+    print("92 people are dead")
+    print("")
+    time.sleep(2)
+    print("58 people are alive and struggling")
+    print("")
+    time.sleep(1)
+    print("You are 1 of the 52")
+    optionplay()
+
+
+#Repeat game
+def optionplay():
+    print("")
+    userinputplay = input ("play again? ")
+    if userinputplay.lower() == "yes":
+        print("")
+        time.sleep(2)
+        planecrash()
+    elif userinputplay.lower() == "no":
+        print("ok")
+    else:
+        print("only answer... yes or no ")
+        optionplay()
+
+#first option
+def planecrash():
+    userinput1 = input ("Do you... Grab your bags and get out, or grab an inflatable raft and leave all your things? ")
+    if userinput1.lower() == "bags":
+        bags()
+    elif userinput1.lower() == "raft":
+        raft()
+    else:
+        print("only answer... bags or raft")
+        planecrash()
+
+planecrash()
+
+
+
+
