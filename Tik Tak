@@ -1,0 +1,52 @@
+
+import turtle
+
+#Defining window
+window = turtle.Screen()
+window.bgcolor("Blue")
+window.title("Tik Tak Toe")
+
+#Defining the turtle
+t = turtle.Turtle()
+t.color("Green")
+t.pensize(2)
+t.shape("turtle")
+
+#Move Turtle
+def square():
+    t.color("blue")
+    t.goto(-150,150) #Need this to not draw
+    t.forward(75) #Need this to not draw
+    t.color("black")
+    t.right(90)
+    t.forward(300)
+    t.left(90)
+    t.color("blue")
+    t.forward(150) #Need this to not draw
+    t.color("black")
+    t.left(90)
+    t.forward(300)
+    t.right(90)
+    t.color("blue")
+    t.forward(125) #Need this to not draw
+    t.color("black")
+    t.right(90)
+    t.color("blue")
+    t.forward(125) #Need this to not draw
+    t.color("black")
+    t.right(90)
+    t.forward(300)
+    t.left(90)
+    t.color("blue")
+    t.forward(150)
+    t.left(90)
+    t.color("black")
+    t.forward(300)
+square()
+
+
+
+
+
+
+window.mainloop()
