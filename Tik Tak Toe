@@ -1,0 +1,405 @@
+import turtle
+
+#Defining window
+window = turtle.Screen()
+window.bgcolor("black")
+window.title("Tik Tak Toe")
+
+
+#Defining the turtle
+t = turtle.Turtle()
+t.color("white")
+t.pensize(6)
+t.shape("turtle")
+
+
+#keep track of spots filled
+turns = 1
+moves = []
+
+
+#Draw out the board
+def board():
+    t.color("white")
+    t.speed(200)
+    t.penup()
+    t.goto(-200,200) #Need this to not draw
+    t.forward(100) #Need this to not draw
+    t.pendown()
+    t.right(90)
+    t.forward(450)
+    t.left(90)
+    t.penup()
+    t.forward(150) #Need this to not draw
+    t.pendown()
+    t.left(90)
+    t.forward(450)
+    t.right(90)
+    t.penup()
+    t.forward(150) #Need this to not draw
+    t.pendown()
+    t.right(90)
+    t.penup()
+    t.forward(150) #Need this to not draw
+    t.pendown()
+    t.right(90)
+    t.forward(450)
+    t.left(90)
+    t.penup()
+    t.forward(150)
+    t.left(90)
+    t.pendown()
+    t.forward(450)
+    t.hideturtle()
+board()
+
+#X and O spots (for winning sequence)
+winx = []
+wino = []
+
+#set spots to 0
+spot1 = 0
+spot2 = 0
+spot3 = 0
+spot4 = 0
+spot5 = 0
+spot6 = 0
+spot7 = 0
+spot8 = 0
+spot9 = 0
+
+
+#All winning combos
+WinA = [1,2,3]
+WinB = [4,5,6]
+WinC = [7,8,9]
+WinD = [1,4,7]
+WinE = [2,5,8]
+WinF = [3,6,9]
+WinG = [1,5,9]
+WinH = [3,5,7]
+
+
+#O code
+def locationO(x,y):
+    global spot1
+    global spot2
+    global spot3
+    global spot4
+    global spot5
+    global spot6
+    global spot7
+    global spot8
+    global spot9
+    t.hideturtle()
+    #top left
+    if x < -100 and x > -250 and y < 200 and y > 50 and spot1 == 0:
+        if 1 in moves:
+            locationO(x,y)
+        else:
+            moves.append(1)
+            t.penup()
+            t.goto(-190, 100)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(1)
+            if all(elem in winx for elem in WinA) or all(elem in winx for elem in WinD) or all(elem in winx for elem in WinG):
+                endx()
+
+    #middle top
+    elif x < 50 and x > -100 and y < 200 and y >50 and spot2 == 0:
+        if 2 in moves:
+            locationO(x,y)
+        else:
+            moves.append(2)
+            t.penup()
+            t.goto(-35,100)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(2)
+            if all(elem in winx for elem in WinA) or all(elem in winx for elem in WinE):
+                endx()
+
+    #top right
+    elif x < 200 and x > 50 and y < 200 and y > 50 and spot3 == 0:
+        if 3 in moves:
+            locationO(x,y)
+        else:
+            moves.append(3)
+            t.penup()
+            t.goto(115, 100)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(3)
+            if all(elem in winx for elem in WinA) or all(elem in winx for elem in WinF) or all(elem in winx for elem in WinH):
+                endx()
+
+    #middle left
+    elif x < -100 and x > -250 and y < 50 and y > -100 and spot4 == 0:
+        if 4 in moves:
+            locationO(x,y)
+        else:
+            moves.append(4)
+            t.penup()
+            t.goto(-190,-50)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(4)
+            if all(elem in winx for elem in WinB) or all(elem in winx for elem in WinD):
+                endx()
+
+    #middle middle
+    elif x < 50 and x > -100 and y < 50 and y > -100 and spot5 == 0:
+        if 5 in moves:
+            locationO(x,y)
+        else:
+            moves.append(5)
+            t.penup()
+            t.goto(-35,-50)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(5)
+            if all(elem in winx for elem in WinB) or all(elem in winx for elem in WinE) or all(elem in winx for elem in WinH):
+                endx()
+
+    #middle right
+    elif x < 200 and x > 50 and y < 50 and y > -100 and spot6 == 0:
+        if 6 in moves:
+            locationO(x,y)
+        else:
+            moves.append(6)
+            t.penup()
+            t.goto(115,-50)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(6)
+            if all(elem in winx for elem in WinB) or all(elem in winx for elem in WinF):
+                endx()
+
+    #bottom left
+    elif x < -100 and x > -250 and y < -100 and y > -250 and spot7 == 0:
+        if 7 in moves:
+            locationO(x,y)
+        else:
+            moves.append(7)
+            t.penup()
+            t.goto(-190,-200)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(7)
+            if all(elem in winx for elem in WinC) or all(elem in winx for elem in WinD) or all(elem in winx for elem in WinH):
+                endx()
+
+    #bottom middle
+    elif x < 50 and x > -100 and y < -100 and y > -250 and spot8 == 0:
+        if 8 in moves:
+            locationO(x,y)
+        else:
+            moves.append(8)
+            t.penup()
+            t.goto(-35, -200)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(8)
+            if all(elem in winx for elem in WinC) or all(elem in winx for elem in WinE):
+                endx()
+
+    #bottom right
+    elif x < 200 and x > 50 and y < -100 and y > -250 and spot9 == 0:
+        if 9 in moves:
+            locationO(x,y)
+        else:
+            moves.append(9)
+            t.penup()
+            t.goto(115,-200)
+            t.write("o", font=("Noteworthy",50))
+            winx.append(9)
+            if all(elem in winx for elem in WinC) or all(elem in winx for elem in WinF) or all(elem in winx for elem in WinG):
+                endx()
+
+
+#X code
+def locationX(x,y):
+    global spot1
+    global spot2
+    global spot3
+    global spot4
+    global spot5
+    global spot6
+    global spot7
+    global spot8
+    global spot9
+    t.hideturtle()
+    #top left
+    if x < -100 and x > -250 and y < 200 and y > 50 and spot1 == 0:
+        if 1 in moves:
+            locationX(x,y)
+        else:
+            moves.append(1)
+            t.penup()
+            t.goto(-190, 100)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(1)
+            if all(elem in wino for elem in WinA) or all(elem in wino for elem in WinD) or all(elem in wino for elem in WinG):
+                endo()
+
+    #top middle
+    elif x < 50 and x > -100 and y < 200 and y >50 and spot2 == 0:
+        if 2 in moves:
+            locationX(x,y)
+        else:
+            moves.append(2)
+            t.penup()
+            t.goto(-35,100)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(2)
+            if all(elem in wino for elem in WinA) or all(elem in wino for elem in WinE):
+                endo()
+
+    #top right
+    elif x < 200 and x > 50 and y < 200 and y > 50 and spot3 == 0:
+        if 3 in moves:
+            locationX(x,y)
+        else:
+            moves.append(3)
+            t.penup()
+            t.goto(115, 100)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(3)
+            if all(elem in wino for elem in WinA) or all(elem in wino for elem in WinF) or all(elem in wino for elem in WinH):
+                endo()
+
+    #middle left
+    elif x < -100 and x > -250 and y < 50 and y > -100 and spot4 == 0:
+        if 4 in moves:
+            locationX(x,y)
+        else:
+            moves.append(4)
+            t.penup()
+            t.goto(-190,-50)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(4)
+            if all(elem in wino for elem in WinB) or all(elem in wino for elem in WinD):
+                endo()
+
+    #middle middle
+    elif x < 50 and x > -100 and y < 50 and y > -100 and spot5 == 0:
+        if 5 in moves:
+            locationX(x,y)
+        else:
+            moves.append(5)
+            t.penup()
+            t.goto(-35,-50)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(5)
+            if all(elem in wino for elem in WinB) or all(elem in wino for elem in WinE) or all(elem in wino for elem in WinG):
+                endo()
+
+    #middle right
+    elif x < 200 and x > 50 and y < 50 and y > -100 and spot6 == 0:
+        if 6 in moves:
+            locationX(x,y)
+        else:
+            moves.append(6)
+            t.penup()
+            t.goto(115,-50)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(6)
+            if all(elem in wino for elem in WinB) or all(elem in wino for elem in WinF):
+                endo()
+
+    #bottom left
+    elif x < -100 and x > -250 and y < -100 and y > -250 and spot7 == 0:
+        if 7 in moves:
+            locationX(x,y)
+        else:
+            moves.append(7)
+            t.penup()
+            t.goto(-190,-200)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(7)
+            if all(elem in wino for elem in WinC) or all(elem in wino for elem in WinD) or all(elem in wino for elem in WinH):
+                endo()
+
+    #bottom middle
+    elif x < 50 and x > -100 and y < -100 and y > -250 and spot8 == 0:
+        if 8 in moves:
+            locationX(x,y)
+        else:
+            moves.append(8)
+            t.penup()
+            t.goto(-35, -200)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(8)
+            if all(elem in wino for elem in WinC) or all(elem in wino for elem in WinE):
+                endo()
+
+    #bottom right
+    elif x < 200 and x > 50 and y < -100 and y > -250 and spot9 == 0:
+        if 9 in moves:
+            locationX(x,y)
+        else:
+            moves.append(9)
+            t.penup()
+            t.goto(115,-200)
+            t.write("x", font=("Noteworthy",50))
+            wino.append(9)
+            if all(elem in wino for elem in WinC) or all(elem in wino for elem in WinF) or all(elem in wino for elem in WinG):
+                endo()
+
+
+def endx():
+    t.clear()
+    window.bgcolor("black")
+    t.goto(-125,-50)
+    t.write("O WINS!",font=("Noteworthy",75))
+    t.goto(-105,-250)
+    t.write("New Game", font=("noteworhty",40))
+    if x < -120 and x > 75 and y < -100 and y > -250:
+        t.clear()
+        board()
+
+def endo():
+    t.clear()
+    window.bgcolor("black")
+    t.goto(-125,-50)
+    t.write("X WINS!",font=("Noteworthy",75))
+    t.goto(-105,-250)
+    t.write("New Game", font=("notworthy", 40))
+    if x < -120 and x > 75 and y < -100 and y > -250:
+        print("here")
+        t.clear()
+        board()
+
+
+
+#turns
+def playing(x,y):
+    global turns
+    if len(moves) < 9:
+        if turns == 0:
+            locationO(x,y)
+            turns = 1
+            if len(moves) == 9:
+                t.clear()
+                window.bgcolor("black")
+                t.goto(-150,-50)
+                t.write("Cats game", font=("Noteworthy",75))
+                t.goto(-105,-250)
+                t.write("New Game", font=("notworthy", 40))
+                if x < -120 and x > 75 and y < -100 and y > -250:
+                    print("here")
+                    t.clear()
+                    board()
+        elif turns == 1:
+            locationX(x,y)
+            turns= 0
+            if len(moves) == 9:
+                    t.clear()
+                    window.bgcolor("black")
+                    t.goto(-150,-50)
+                    t.write("Cats game", font=("Noteworthy",75))
+                    t.goto(-105,-250)
+                    t.write("New Game", font=("notworthy", 40))
+                    if x < -120 and x > 75 and y < -100 and y > -250:
+                        print("here")
+                        t.clear()
+                        board()
+
+
+window.onscreenclick(playing)
+window.mainloop()
+
+
