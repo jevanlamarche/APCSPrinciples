@@ -1,0 +1,66 @@
+from tkinter import *
+
+global points
+points = 0
+
+window = Tk()
+#canvas setup
+playground = Canvas(window, width =700, height= 720, bg = "black")
+playground.pack()
+
+#background image
+stars = PhotoImage(file = "Webp.net-resizeimage.gif")
+courseBg = playground.create_image(0,0, anchor = NW, image =stars)
+
+#image ontop of background
+spacePic = PhotoImage(file = "Webp.net-resizeimage.png")
+Stay = spacePic
+space = playground.create_image(590,600, image = spacePic)
+
+alien = PhotoImage(file = "alien-in-flying-saucer-clipart.png")
+Stay = alien
+alien = playground.create_image(350, 200, image = alien)
+
+def spaceBoundary():
+    global points
+    spaceBbox = playground.bbox(space)
+    #Give each coordinate a varible
+    spacex1 = spaceBbox[0]
+    spacey1 = spaceBbox[1]
+    spacex2 = spaceBbox[2]
+    spacey2 = spaceBbox[3]
+
+    AlienBbox = playground.bbox(alien)
+    alienx1 = AlienBbox [0]
+    alieny1 = AlienBbox [1]
+    alienx2 = AlienBbox [2]
+    alieny2 = AlienBbox [3]
+
+    if spacex1 <= alienx1 <= spacex2 and spacey1 <= alieny1 <= spacey2 or spacey2 >= alieny2 >= spacey1 and spacex2 >= alienx2 >=spacex1:
+        points = points +1
+        firstLabel = Label(window, text = points, bg = "black", fg="white", height = "15", width = "20")
+        firstLabel.place(x=0, y=0)
+
+#keep the spaceship on the board
+    #rightside
+    if spacex2 > 700:
+        playground.move(space, -10,0)
+    #leftside
+    elif spacex1 < 6:
+        playground.move(space, 10,0)
+    #up
+    elif spacey1 < 10:
+        playground.move(space, 0,10)
+    #down
+    elif spacey2 > 650:
+        playground.move(space, 0,-10)
+
+
+
+
+
+window.mainloop()
+
+
+
+
